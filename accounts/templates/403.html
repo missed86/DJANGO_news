@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}No tienes permiso{% endblock title %}
+
+{% block content %}
+    <div class="container p-5">
+        <h1>No tienes permiso para realizar esta operación</h1>
+    </div>
+
+    <a href="{% url 'home' %}">Volver</a>
+{% endblock content %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Artículos{% endblock %}
+
+{% block content %}
+    <div class="container p-5">
+        {% for article in object_list %}
+          <div class="card-body">
+            <p>{{ article.body }}</p>
+            <a href="{% url 'article_edit' article.pk %}">Editar</a> |
+            <a href="{% url 'article_delete' article.pk %}">Borrar</a>
+          </div>
+          <div class="card-footer">
+            {% for comment in article.comments.all %}
+                <p>
+                    <span class="font-weight-bold">
+                        {{ comment.author }} &middot;
+                    </span>
+                    {{ comment }}
+                </p>
+            {% endfor %}
+          </div>
+          <br>
+        {% endfor %}
+    </div>
+{% endblock content %}
